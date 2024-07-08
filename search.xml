@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>RNN与LSTM原理及代码实现</title>
+      <link href="/2024/07/08/RNN-%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/"/>
+      <url>/2024/07/08/RNN-%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="RNN与LSTM"><a href="#RNN与LSTM" class="headerlink" title="RNN与LSTM"></a>RNN与LSTM</h1><h2 id="一个关于RNN由来的例子"><a href="#一个关于RNN由来的例子" class="headerlink" title="一个关于RNN由来的例子"></a>一个关于RNN由来的例子</h2><p><img src="/imgs%5Cimage-20240708212505196.png" alt="image-20240708212505196"></p><p>如果想解决词汇编码的问题，可以通过Word hashing来表示。</p><p><img src="/imgs%5Cimage-20240708212659170.png" alt="image-20240708212659170"></p><p>对于简单的这种网络，只能简单识别出Taipei是目的地或是出发地，而不是精准的判断Taipei到底是出发地还是目的地，对于leave和arrive这两个词被划分到了’other’维度，所以想要解决这个问题，就需要一个有记忆力的神经网络，这就是Recurrent Neural Network(RNN)。</p><h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p><img src="/imgs%5Cimage-20240708213056663.png" alt="image-20240708213056663"></p><p>那么，需要创建新的a1与a2，来分别存储hidden layer的output，并且，下一次hidden layer的input不光是x1和x2的输入，还包括a1和a2的输入。</p><p><img src="/imgs%5Cimage-20240708213531877.png" alt="image-20240708213531877"></p><p>这样的话，就可以实现一整个语句的输入了。</p><p><img src="/imgs%5Cimage-20240708213742365.png" alt="image-20240708213742365"></p><p>当然也可以实现更深的RNN。</p><p><img src="/imgs%5Cimage-20240708213814636.png" alt="image-20240708213814636"></p><p>另外还有两种Network，一个是Elman Network和Jordan Network，Jordan Network是根据前一个的最后输出来进行存储。</p><p><img src="/imgs%5Cimage-20240708214010297.png" alt="image-20240708214010297"></p><p>此外还有双向的RNN，即考虑了正向和反向，并将两者的output输出，得到Yt,这样的话范围更广。</p><p><img src="/imgs%5Cimage-20240708214359660.png" alt="image-20240708214359660"></p><p>LSTM（Long short-term Memory）则是一个更加复杂的RNN，其中有四个input和一个output，分别有输出门，输入门和遗忘门来控制信号是否输入。</p><p><img src="/imgs%5Cimage-20240708215757390.png" alt="image-20240708215757390"></p><p>对于上面的流程，先对z信息输入，经过simoid function得到g(z)，然后与Input Gate输出的f(zi)相乘，得到g(z)f(zi)，中间Cell存储的初值为c，再经过Forget Gate的输出后，相乘得到cf(zf)，这样与前面的值相加，得到c&#96;，接着再通过sigmoid function，输出结果与Output Gate的输出相乘，得到α。</p><p><img src="/imgs%5Cimage-20240708220212126.png" alt="image-20240708220212126"></p><p>这是一个简短的举例，如果x2&#x3D;1，那么将x1的值添加到Memory中，若x2&#x3D;-1，则释放掉Memory，如果x3&#x3D;1，那么将Memory中储存的值输出出来，可以看到3+4&#x3D;7。</p><h2 id="具体计算过程"><a href="#具体计算过程" class="headerlink" title="具体计算过程"></a>具体计算过程</h2><p><img src="/imgs%5Cimage-20240708220653433.png" alt="image-20240708220653433"></p><p>这个是LSTM一个Cell的最初形态，即x1,x2,x3和bias为1的输入，那么对于右下角的序列输入，可具体展示为以下过程：</p><p><img src="/imgs%5Cimage-20240708222500230.png" alt="image-20240708222500230"></p><p>首先输入序列为3，1，0，计算过程如图所示，Input Gate的信号最后输出为1，这样的话与3相乘后结果依旧为3，实现了输入门的使能功能，接着，Forget Gate也输出1，代表没有遗忘，最后与原cell中的值相加后，得到3，最后的Output Gate为0，代表输出信号禁止选通，最后实际输出0，但是cell的值已经从0变化到了3，后面的步骤依次类推。</p><p><img src="/imgs%5Cimage-20240708222947885.png" alt="image-20240708222947885"></p><p><img src="/imgs%5Cimage-20240708223017862.png" alt="image-20240708223017862"></p><p><img src="/imgs%5Cimage-20240708223035398.png" alt="image-20240708223035398"></p><p><img src="/imgs%5Cimage-20240708223056973.png" alt="image-20240708223056973"></p><h2 id="总体展示"><a href="#总体展示" class="headerlink" title="总体展示"></a>总体展示</h2><p><img src="/imgs%5Cimage-20240708221858291.png" alt="image-20240708221858291"></p><p><img src="/imgs%5Cimage-20240708221935324.png" alt="image-20240708221935324"></p><p>这样的话就可以实现LSTM，将上一个的输出接到下一个的输入，同时考虑Xt信息中的门控信号和锁存信号，类似于时序逻辑电路。</p><p><img src="/imgs%5Cimage-20240708222110442.png" alt="image-20240708222110442"></p><p><img src="/imgs%5Cimage-20240708222221308.png" alt="image-20240708222221308"></p><p>以上是LSTM并联的完整体，即输入信息还额外包括了C与H信息，也叫peephole。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>自注意力机制(Self-Attention)</title>
+      <link href="/2024/07/08/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Self-Attention/"/>
+      <url>/2024/07/08/%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Self-Attention/</url>
+      
+        <content type="html"><![CDATA[<h1 id="自注意力机制-Self-Attention"><a href="#自注意力机制-Self-Attention" class="headerlink" title="自注意力机制(Self-Attention)"></a>自注意力机制(Self-Attention)</h1><p>该笔记的资料与图片来源于台湾大学李宏毅教授的机器学习课程。</p><h2 id="原理讲解"><a href="#原理讲解" class="headerlink" title="原理讲解"></a>原理讲解</h2><p>自注意力机制应用于多个向量输入并输出信息。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\b252ecea4d2f109cef89a77069faf61d.png" alt="b252ecea4d2f109cef89a77069faf61d"></p><p>比如有语音辨识场景，文字聊天，Graph图等场景，一般来说对于词义表示有One-Hot Encoding（独热编码)或是Word Embedding，对于语音辨识则有frame滑动。</p><p>对于输出而言，则有以下几种场景：</p><ul><li>输入的input数量和输出的output数量相同，比如说POS tagging(词性标注)，Social Network等</li></ul><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\bfda8ed45180b27278da3bac1be3e5ec.png" alt="bfda8ed45180b27278da3bac1be3e5ec"></p><ul><li>Model仅输出一个label，比如Sentiment Analysis(情感分析)</li></ul><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\519dc35935218cfa1aab2922b9c1d566.png" alt="519dc35935218cfa1aab2922b9c1d566"></p><ul><li><p>机器自己决定输出的output数量，又叫Seq2Seq任务</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\fc0e73b3b63ab324047ee54838ffa6b8.png" alt="fc0e73b3b63ab324047ee54838ffa6b8"></p></li></ul><p>对于以往的情况，若是直接运用Fully connected network，则会出现输入信息无顺序性的情况，这种情况就不能运用有顺序的信息，如语句、时序信息等，</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708203700532.png" alt="image-20240708203700532"></p><p>为了解决这个问题，在Fully connected network前面加入一个Self-attention机制，这样就可以考虑输入信号的Sequence连贯性，不是信息的局部性而是整体性。而且Self-attention模块并不仅仅只能加入到整个模型的最前方，在FC与FC之间也可以添加。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708204027574.png" alt="image-20240708204027574"></p><p>如图，这是Self-attention内部的简单实现，这样就可以考虑整个Sequence来输出一个Sequence。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708204208371.png" alt="image-20240708204208371"></p><p>若想得到输出的信息，如b1向量，需要找出a1和其他哪些信息是相关的，相关的程度α大小是多少。</p><p>计算相关度的方法，可以由以下模块来实现</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708204430516.png" alt="image-20240708204430516"></p><p>左面是最常用的方法，对于两个输入信息，分别进行Wq与Wk的矩阵相乘，得到q与k，再进行点乘，得到α，右边则将两个矩阵相乘的结果进行相加后放入到tanh函数中，来与W矩阵相乘得到α。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708204818516.png" alt="image-20240708204818516"></p><p>dot-product中的query和key是通过将a1和Wq相乘，得到q1，Wk和a2相乘得到k2，再让q1和k2点乘得到α1,2（叫做attention score），最后再接一个softmax模块来标准化得到α&#96;，但是softmax模块并不是必须的，也可以接Relu等。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708205229517.png" alt="image-20240708205229517"></p><p>为了提取出相关性，再将a与Wv相乘，得到v信息，然后再将v与α相乘再相加，得到b信息。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708205419310.png" alt="image-20240708205419310"></p><p>对于b1，b2，b3等信息，它们是并行输出的，故没有先后的顺序性。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708205850709.png" alt="image-20240708205850709"></p><p>根据q，k，v的计算公式，将其整合为一个矩阵，得到Q，K，V矩阵，</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708210101186.png" alt="image-20240708210101186"></p><p>接着将K矩阵转置后与Q相乘，得到分数矩阵A，再进行softmax得到A&#96;。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708210238361.png" alt="image-20240708210238361"></p><p>再将V矩阵和A&#96;矩阵相乘，最后得到O矩阵，这样就得到了b信息的输出了，这个过程中的W矩阵是模型训练得到的。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708210557402.png" alt="image-20240708210557402"></p><p>对于Multi-head Self-attention的话，则需要更多的qkv来表示新的种类。</p><p>但是以上这种方式也缺少了位置信息，故采用Postional Encoding方法来解决这个问题，即向a信息上添加e信息。</p><p><img src="D:\BlogFile\source_posts\自注意力机制-Self-Attention.assets\image-20240708211233152.png" alt="image-20240708211233152"></p><p>对于语音辨识时，可能有时候不需要考虑整个声音信号，只需要考虑一部分，这样可以减少计算量，叫做Truncated Self-attention，一般来说Self-attention广泛应用在Transformer和Bert上。</p><p>Self-attention和CNN之间也有一些区别，CNN的receptive field是部分范围的，而Self-attention是整体的，可以说CNN是简化版的Self-attention，或者说Self-attention是复杂版的CNN。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CNN卷积神经网络</title>
       <link href="/2024/07/05/CNN%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
       <url>/2024/07/05/CNN%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
