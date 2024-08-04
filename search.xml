@@ -36,6 +36,25 @@
     
     
     <entry>
+      <title>数据预处理</title>
+      <link href="/2024/08/03/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
+      <url>/2024/08/03/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><p>数据挖掘一般分为四个步骤：</p><ul><li>数据清洗  </li><li>数据集成</li><li>数据变换</li><li>数据规约</li></ul><h2 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h2><p>数据清洗主要是为了删除原始数据集中的无关数据，重复数据，噪声异常值，缺失值等。</p><h3 id="缺失值的处理"><a href="#缺失值的处理" class="headerlink" title="缺失值的处理"></a>缺失值的处理</h3>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 数据分析 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>三大相关系数检验</title>
       <link href="/2024/08/02/%E4%B8%89%E5%A4%A7%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E6%A3%80%E9%AA%8C/"/>
       <url>/2024/08/02/%E4%B8%89%E5%A4%A7%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E6%A3%80%E9%AA%8C/</url>
