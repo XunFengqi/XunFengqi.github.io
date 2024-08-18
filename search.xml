@@ -27,9 +27,15 @@
       <link href="/2024/08/18/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90PCA/"/>
       <url>/2024/08/18/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90PCA/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h1><p>主成分分析（Principal Component Analysis, PCA）是一种统计技术，用于将高维数据降维到较低的维度，同时保留数据中尽可能多的原始信息。它通过线性变换来找到数据中方差最大的方向，并将数据投影到这些方向上，从而实现降维和特征提取。</p><p>一个最直观的例子，假如有一个二维的数据集，假设散点图所展示的关系大致为:y = 2*X + 3，那么可以发现，当x越大，y也就越大，这就叫共线性，也叫做信息冗余，而对于实际的机器学习问题来说，我们更多想要的是线性可分的特征变量，如果我们对这个x,y轴进行旋转的话，那么就可以得到一种情况，即在新的x，y图像上，这个倾斜的直线变成了一条水平或竖直的直线，这种情况下的新特征x,y就变得线性可分了，也就是我们想要的这种情况。</p><p>由于旋转后以及没有了信息冗余，而我们又想知道新生成的特征所携带的信息量如何，就可以通过方差来观察，旋转后得到的各个变量是独立地代表样本的某部分信息，<br>比如，x的方差为6，y 的方差为4，那么相当于x携带了60%的样本信息，y携带了40%的信息，因此称旋转后得到的各个变量为主成份并根据方差的大小命名为n主成份，通过方差排序。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line">iris   = load_iris()    </span><br><span class="line">X      = iris.data      </span><br><span class="line">x_mean = X.mean(axis=<span class="number">0</span>)  <span class="comment"># 样本中心 </span></span><br><span class="line"></span><br><span class="line">clf = PCA() </span><br><span class="line">clf.fit(X)    </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;主成份系数矩阵A:\n A=&#x27;</span>,clf.components_)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;主成份方差var:&#x27;</span>,clf.explained_variance_)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;主成份贡献占比(方差占比)Pr:&#x27;</span>,clf.explained_variance_ratio_)</span><br><span class="line"></span><br><span class="line">y = clf.transform(X)                <span class="comment"># transform方法获取主成份数据  </span></span><br></pre></td></tr></table></figure>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
       
     </entry>
     
