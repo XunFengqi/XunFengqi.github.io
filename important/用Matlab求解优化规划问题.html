@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>用Matlab求解优化规划问题(Updating...) | 寻风起的个人博客</title><meta name="author" content="寻风起."><meta name="copyright" content="寻风起."><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="优化问题在现代工程与科学研究中，优化问题的求解扮演着至关重要的角色。从资源分配到产品设计，从控制系统到数据分析，几乎每一个领域都涉及到如何在复杂的约束条件下，找到一个或多个最优解的挑战。为了应对这些挑战，不同类型的优化方法被广泛应用，其中最为常见的包括线性规划、非线性规划、整数规划和多目标规划。 实际上，经常阅读工程方面的文献就可以发现，许多问题最后都可以用这些方法来建立成一个单目标或多目标的优化">
+<meta property="og:type" content="website">
+<meta property="og:title" content="用Matlab求解优化规划问题(Updating...)">
+<meta property="og:url" content="http://example.com/important/%E7%94%A8Matlab%E6%B1%82%E8%A7%A3%E4%BC%98%E5%8C%96%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98.html">
+<meta property="og:site_name" content="寻风起的个人博客">
+<meta property="og:description" content="优化问题在现代工程与科学研究中，优化问题的求解扮演着至关重要的角色。从资源分配到产品设计，从控制系统到数据分析，几乎每一个领域都涉及到如何在复杂的约束条件下，找到一个或多个最优解的挑战。为了应对这些挑战，不同类型的优化方法被广泛应用，其中最为常见的包括线性规划、非线性规划、整数规划和多目标规划。 实际上，经常阅读工程方面的文献就可以发现，许多问题最后都可以用这些方法来建立成一个单目标或多目标的优化">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/head.jpg">
+<meta property="article:published_time" content="2024-08-21T07:52:13.000Z">
+<meta property="article:modified_time" content="2024-08-22T11:53:24.960Z">
+<meta property="article:author" content="寻风起.">
+<meta property="article:tag" content="优化问题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/head.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/important/%E7%94%A8Matlab%E6%B1%82%E8%A7%A3%E4%BC%98%E5%8C%96%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '用Matlab求解优化规划问题(Updating...)',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-08-22 19:53:24'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="寻风起的个人博客"><span class="site-name">寻风起的个人博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">用Matlab求解优化规划问题(Updating...)</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><h1 id="优化问题"><a href="#优化问题" class="headerlink" title="优化问题"></a>优化问题</h1><p>在现代工程与科学研究中，优化问题的求解扮演着至关重要的角色。从资源分配到产品设计，从控制系统到数据分析，几乎每一个领域都涉及到如何在复杂的约束条件下，找到一个或多个最优解的挑战。为了应对这些挑战，不同类型的优化方法被广泛应用，其中最为常见的包括线性规划、非线性规划、整数规划和多目标规划。</p>
+<p>实际上，经常阅读工程方面的文献就可以发现，许多问题最后都可以用这些方法来建立成一个单目标或多目标的优化模型去解决实际问题。</p>
+<h2 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h2><p>对于线性规划而言，可以用以下的公式来表达。</p>
+<script type="math/tex; mode=display">
+\text{Minimize} \quad & \mathbf{c}^\top \mathbf{x} \\
+\text{subject to} \quad &
+\begin{cases}
+\mathbf{A} \mathbf{x} \leq \mathbf{b}\\
+Aeq\cdot x = beq \\
+lb ≤x≤ub
+\end{cases}</script><p>其中，对于目标函数，可以通过在前面加一个符号，将一个最大值转换成最小值问题，$c$是目标函数的系数向量。n×1，其中 n 是决策变量 x 的数量。A是不等式约束的系数矩阵，b是不等式约束的常数向量，而Aeq和beq就是等式约束的系数矩阵和常数向量，对于决策变量x,有lb与ub的上下限。</p>
+<p>对于此类问题，可以用Matlab的linprog函数去求解。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x,fval] = linprog(f,A,b,Aeq,beq,lb,ub)</span><br></pre></td></tr></table></figure>
+<p>其中，x返回决策变量的取值，fval返回目标函数的最优解，f为优化函数的系数。</p>
+<p><strong>实例</strong>：假设优化一个产品生产和资源分配计划，其中 $x_{ij}$代表在第 (i) 类产品的第 (j) 种资源的分配量。目标是最大化资源的总价值（基于系数矩阵 C）。约束条件包括每类产品的最大资源限制、资源的总需求量，以及每种资源分配量不能为负。</p>
+<script type="math/tex; mode=display">
+\text{maximize } z = \sum_{i=1}^2 \sum_{j=1}^3 c_{ij} x_{ij}</script><script type="math/tex; mode=display">
+\sum_{j=1}^3 x_{1j} \leq 10 \\
+\sum_{j=1}^3 x_{2j} \leq 15 \\
+\sum_{i=1}^2 \sum_{j=1}^3 x_{ij} = 20 \\
+x_{ij} \geq 0 \text{ for all } i \text{ and } j</script><script type="math/tex; mode=display">
+C = \begin{bmatrix}
+4 & 3 & 2 \\
+5 & 6 & 1
+\end{bmatrix}</script><p>在 MATLAB 的 <code>linprog</code> 函数中，所有的变量需要被展平（flattened）成一个一维列向量进行处理。尽管在问题的实际背景中，变量是一个二维矩阵（比如 2×32），但为了简化计算，<code>linprog</code> 只接受一维的向量形式。因此，二维变量矩阵 $x_{ij}$被展平成一个一维列向量。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">c = [<span class="number">-4</span>,<span class="number">-3</span>,<span class="number">-2</span>,<span class="number">-5</span>,<span class="number">-6</span>,<span class="number">-1</span>];  <span class="comment">% 目标函数系数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 约束矩阵</span></span><br><span class="line">A = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>;</span><br><span class="line">     <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>];</span><br><span class="line"><span class="comment">% 约束向量</span></span><br><span class="line">b = [<span class="number">10</span>; <span class="number">15</span>];</span><br><span class="line">Aeq = <span class="built_in">ones</span>(<span class="number">1</span>, <span class="number">6</span>);  <span class="comment">% 线性等式约束矩阵</span></span><br><span class="line">beq = <span class="number">20</span>;  <span class="comment">% 线性等式约束向量</span></span><br><span class="line">lb = <span class="built_in">zeros</span>(<span class="number">6</span>, <span class="number">1</span>);  <span class="comment">% 变量的下界</span></span><br><span class="line"></span><br><span class="line">options = optimoptions(<span class="string">&#x27;linprog&#x27;</span>,<span class="string">&#x27;Display&#x27;</span>,<span class="string">&#x27;none&#x27;</span>); </span><br><span class="line">[x, fval] = linprog(c, A, b, Aeq, beq, lb, [], options);</span><br><span class="line"></span><br><span class="line">fprintf(<span class="string">&#x27;最大化的目标值 z = %.2f\n&#x27;</span>, -fval);  <span class="comment">% 目标函数值，记得取负值恢复到最大化</span></span><br></pre></td></tr></table></figure>
+<h2 id="非线性规划"><a href="#非线性规划" class="headerlink" title="非线性规划"></a>非线性规划</h2><p>在原有的线性规划的基础上稍作修改，就可以得到以下式子：</p>
+<script type="math/tex; mode=display">
+\text{Minimize} \quad f(x) \\
+\text{subject to} \quad &
+\begin{cases}
+\mathbf{A} \mathbf{x} \leq \mathbf{b},Aeq\cdot x = beq \\
+c(x)≤0，Ceq(x)=0 \\
+lb ≤x≤ub
+\end{cases}</script><p>其中，c(x)表示非线性不等式约束，Ceq为非线性等式约束。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x,value]=fmincon(func,x0,A,b,Aeq,beq,lb,ub,nonlcon，options)</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\begin{aligned}&min\quad f(x)={x_1}^2+{x_2}^2+{x_3}^2-6\\&s.t.\begin{cases}x_1^2-x_2+0*x_3=0\\-x_1+x_2^2-x_3^3+2\leq0\\x_1+x_2^2-2x_3-5\leq0\\x_1,x_2,x_3\geq0\end{cases}\end{aligned}</script><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>=<span class="title">func</span><span class="params">(x)</span></span></span><br><span class="line">func=sum(x.^<span class="number">2</span>)<span class="number">-6</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[C,Ceq]</span>=<span class="title">nonlcon</span><span class="params">(x)</span></span></span><br><span class="line">C=[-x(<span class="number">1</span>)+x(<span class="number">2</span>)^<span class="number">2</span>-x(<span class="number">3</span>)^<span class="number">2</span>+<span class="number">2</span>;</span><br><span class="line">x(<span class="number">1</span>)+x(<span class="number">2</span>)^<span class="number">2</span><span class="number">-2</span>*x(<span class="number">3</span>)<span class="number">-5</span>]</span><br><span class="line">Ceq=[x(<span class="number">1</span>)^<span class="number">2</span>-x(<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x,value]=fmincon(<span class="string">&#x27;func&#x27;</span>,[<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>],[],[],[],[],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],[],<span class="string">&#x27;nonlcon&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="遗传算法工具箱"><a href="#遗传算法工具箱" class="headerlink" title="遗传算法工具箱"></a>遗传算法工具箱</h2><p>事实上，非线性规划求出来的往往是局部最优解，所以我们可以利用一些智能优化算法工具箱去解决，这里以2023年数学建模国赛A题其中一篇优秀论文的模型为例：</p>
+<script type="math/tex; mode=display">
+\eta_{ijk} = \frac{A(ST_i, D_j) \cdot B(ST_i, D_j)}{\sqrt{(x_k - x_0)^2 + (y_k - y_0)^2 + H^2}}</script><p>其中：</p>
+<ul>
+<li>A(STi,Dj) 是由时间和日期确定的太阳高度角参数。</li>
+<li>B(STi,Dj)是由时间和日期确定的太阳方位角参数。</li>
+<li>(xk,yk)是第 kkk 个定日镜的水平坐标。</li>
+<li>(x0,y0)是聚光点的水平坐标（例如 x0=0,y0=−250）。</li>
+<li>H 是所有定日镜的固定高度。</li>
+</ul>
+<p>以下是公式的latex代码，由于网页无法编译，故提供源代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\max_&#123;r,l,w,h,N,I_&#123;a&#125;&#125;\quad\overline&#123;E&#125;_&#123;u&#125;\left(r,l,w,h,N,I_&#123;a&#125;\right)=\frac&#123;\sum_&#123;&#123;i\operatorname&#123;=&#125;1&#125;&#125;^&#123;12&#125;\sum_&#123;&#123;j\operatorname&#123;=&#125;1&#125;&#125;^&#123;5&#125;\sum_&#123;&#123;k\operatorname&#123;=&#125;1&#125;&#125;^&#123;N&#125;DNI_&#123;ij&#125;\cdot\eta_&#123;ijk&#125;&#125;&#123;60N&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.t.\begin&#123;cases&#125;r\in[-R,R]\\l,w\in[2m,8m]\\l\leqslant w\\h\in[2m,6m]\\h&gt;\frac&#123;1&#125;&#123;2&#125;l\\N\in[1000,5000]\\\sqrt&#123;&#123;x_&#123;a&#125;&#125;^&#123;2&#125;+&#123;y_&#123;a&#125;&#125;^&#123;2&#125;&#125;\leqslant R\\\sqrt&#123;&#123;x_&#123;a&#125;&#125;^&#123;2&#125;+&#123;(y_&#123;a&#125;-r)&#125;^&#123;2&#125;&#125;\geqslant100\\\sqrt&#123;\left(x_&#123;a&#125;-x_&#123;b&#125;\right)^&#123;2&#125;+\left(y_&#123;a&#125;-y_&#123;b&#125;\right)^&#123;2&#125;&#125;&gt;w+5\\\overline&#123;E&#125;_&#123;fictd&#125;=\frac&#123;\sum_&#123;i=1&#125;^&#123;12&#125;\sum_&#123;j=1&#125;^&#123;5&#125;\sum_&#123;k=1&#125;^&#123;N&#125;DNI_&#123;ij&#125;\cdot A_&#123;k&#125;\cdot\eta_&#123;ijk&#125;&#125;&#123;60&#125;\geqslant60MW&amp;&amp;\end&#123;cases&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">clear;</span><br><span class="line">clc;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 问题参数</span></span><br><span class="line">N = <span class="number">2739</span>;      <span class="comment">% 定日镜数量</span></span><br><span class="line">H = <span class="number">4</span>;         <span class="comment">% 定日镜高度</span></span><br><span class="line">R = <span class="number">350</span>;       <span class="comment">% 最大半径</span></span><br><span class="line">l_min = <span class="number">2</span>; l_max = <span class="number">8</span>;  <span class="comment">% l 的范围</span></span><br><span class="line">w_min = <span class="number">2</span>; w_max = <span class="number">8</span>;  <span class="comment">% w 的范围</span></span><br><span class="line">h_min = <span class="number">2</span>; h_max = <span class="number">6</span>;  <span class="comment">% h 的范围</span></span><br><span class="line">x0 = <span class="number">0</span>; y0 = <span class="number">-250</span>;     <span class="comment">% 聚光点的坐标</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 遗传算法参数</span></span><br><span class="line">ns = N * <span class="number">2</span> + <span class="number">3</span>;        <span class="comment">% 要优化的变量数 (2N 个坐标 + 3 个尺寸变量 l, w, h)</span></span><br><span class="line">lb = [-R * <span class="built_in">ones</span>(<span class="number">1</span>, N*<span class="number">2</span>), l_min, w_min, h_min];  <span class="comment">% 下界</span></span><br><span class="line">ub = [R * <span class="built_in">ones</span>(<span class="number">1</span>, N*<span class="number">2</span>), l_max, w_max, h_max];   <span class="comment">% 上界</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 遗传算法求解</span></span><br><span class="line">[x, fval] = ga(@objective_function, ns, [], [], [], [], lb, ub, @nonlin_constraints);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 优化后的定日镜坐标</span></span><br><span class="line">x_a = x(<span class="number">1</span>:N);</span><br><span class="line">y_a = x(N+<span class="number">1</span>:<span class="number">2</span>*N);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 优化后的尺寸变量</span></span><br><span class="line">l_opt = x(<span class="keyword">end</span><span class="number">-2</span>);</span><br><span class="line">w_opt = x(<span class="keyword">end</span><span class="number">-1</span>);</span><br><span class="line">h_opt = x(<span class="keyword">end</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 显示优化结果</span></span><br><span class="line"><span class="built_in">disp</span>([<span class="string">&#x27;优化后的目标函数值: &#x27;</span>, num2str(fval)]);</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;优化后的定日镜坐标:&#x27;</span>);</span><br><span class="line"><span class="built_in">disp</span>([x_a&#x27;, y_a&#x27;]);</span><br><span class="line"><span class="built_in">disp</span>([<span class="string">&#x27;优化后的 l, w, h: &#x27;</span>, num2str(l_opt), <span class="string">&#x27;, &#x27;</span>, num2str(w_opt), <span class="string">&#x27;, &#x27;</span>, num2str(h_opt)]);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 目标函数定义</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> = <span class="title">objective_function</span><span class="params">(x)</span></span></span><br><span class="line">    N = <span class="number">2739</span>; x0 = <span class="number">0</span>; y0 = <span class="number">-250</span>;</span><br><span class="line">    ST = [<span class="number">9</span>, <span class="number">10.5</span>, <span class="number">12</span>, <span class="number">13.5</span>, <span class="number">15</span>];</span><br><span class="line">    D = [<span class="number">306</span>, <span class="number">337</span>, <span class="number">0</span>, <span class="number">31</span>, <span class="number">61</span>, <span class="number">92</span>, <span class="number">122</span>, <span class="number">153</span>, <span class="number">184</span>, <span class="number">214</span>, <span class="number">245</span>, <span class="number">275</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 定日镜坐标</span></span><br><span class="line">    xyz = [x(<span class="number">1</span>:N)&#x27;, x(N+<span class="number">1</span>:<span class="number">2</span>*N)&#x27;, <span class="built_in">repmat</span>(x(<span class="keyword">end</span>), N, <span class="number">1</span>)];  <span class="comment">% 使用优化变量 h</span></span><br><span class="line">    e2 = <span class="built_in">zeros</span>(<span class="number">12</span>, <span class="number">5</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="number">5</span></span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:<span class="number">12</span></span><br><span class="line">            [A, B] = SUN(ST(<span class="built_in">i</span>), D(<span class="built_in">j</span>));  <span class="comment">% 计算太阳位置参数</span></span><br><span class="line">            e2(<span class="built_in">j</span>, <span class="built_in">i</span>) = calculate_efficiency(xyz, N, x0, y0, A, B);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    Se2 = <span class="built_in">mean</span>(e2, <span class="string">&#x27;all&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 判断是否满足最低发电要求</span></span><br><span class="line">    <span class="keyword">if</span> Se2 &lt; <span class="number">60</span></span><br><span class="line">        f = <span class="number">1e6</span>; <span class="comment">% 违反约束时，设置一个较大的目标函数值</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        f = -Se2; <span class="comment">% 遗传算法最小化 -Se2</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 非线性约束函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[c, ceq]</span> = <span class="title">nonlin_constraints</span><span class="params">(x)</span></span></span><br><span class="line">    N = <span class="number">2739</span>; H = <span class="number">4</span>; R = <span class="number">350</span>; x0 = <span class="number">0</span>; y0 = <span class="number">-250</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 提取优化变量</span></span><br><span class="line">    x_a = x(<span class="number">1</span>:N);</span><br><span class="line">    y_a = x(N+<span class="number">1</span>:<span class="number">2</span>*N);</span><br><span class="line">    l = x(<span class="keyword">end</span><span class="number">-2</span>);</span><br><span class="line">    w = x(<span class="keyword">end</span><span class="number">-1</span>);</span><br><span class="line">    h = x(<span class="keyword">end</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 非线性不等式约束</span></span><br><span class="line">    c = [</span><br><span class="line">        <span class="comment">% 尺寸约束</span></span><br><span class="line">        l - w;                            <span class="comment">% l &lt;= w</span></span><br><span class="line">        h - <span class="number">0.5</span> * l;                      <span class="comment">% h &gt; 0.5 * l</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">% 几何约束</span></span><br><span class="line">        <span class="built_in">sqrt</span>(x_a.^<span class="number">2</span> + y_a.^<span class="number">2</span>) - R;        <span class="comment">% sqrt(x_a^2 + y_a^2) &lt;= R</span></span><br><span class="line">        -<span class="built_in">sqrt</span>(x_a.^<span class="number">2</span> + (y_a - r).^<span class="number">2</span>) + <span class="number">100</span>;  <span class="comment">% sqrt(x_a^2 + (y_a - r)^2) &gt;= 100</span></span><br><span class="line">        -<span class="built_in">sqrt</span>((x_a - x0).^<span class="number">2</span> + (y_a - y0).^<span class="number">2</span>) + w + <span class="number">5</span> <span class="comment">% sqrt((x_a-x0)^2 + (y_a-y0)^2) &gt; w + 5</span></span><br><span class="line">    ];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 非线性等式约束</span></span><br><span class="line">    ceq = [];</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">寻风起.</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>中国西南地区某综合类985理工科在读</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/XunFengqi" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2867703204@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的行动基地！传送门已部署，我们的行动将更迅速。</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/30/Pandas%E4%B8%8ENumpy%E8%AF%AD%E6%B3%95/" title="数据科学中Numpy与Pandas的常用语法">数据科学中Numpy与Pandas的常用语法</a><time datetime="2024-11-30T06:51:37.000Z" title="发表于 2024-11-30 14:51:37">2024-11-30</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">2.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-11-30T12:17:57.732Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By 寻风起.</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="32" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

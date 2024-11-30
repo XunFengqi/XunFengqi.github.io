@@ -1,0 +1,452 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>非参数检验 | 寻风起的个人博客</title><meta name="author" content="寻风起."><meta name="copyright" content="寻风起."><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="非参数检验非参数检验是在总体方差未知或知道甚少的情况下，利用样本数据对总体分布形态等进行推断的方法。一般来说参数检验侧重于样本整体的均值，而非参数检验更侧重于样本的中位值，这也就意味对于极差较大的数据来说，非参数检验不容易收到极端值的干扰。 参数检验应用的前提是数据符合正态分布，而现实情况中很多数据的分布并不服从正态分布，虽然对于样本量很大的数据来说，即使其不符合正态分布，但应用参数检验也能取到较">
+<meta property="og:type" content="website">
+<meta property="og:title" content="非参数检验">
+<meta property="og:url" content="http://example.com/important/%E9%9D%9E%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C.html">
+<meta property="og:site_name" content="寻风起的个人博客">
+<meta property="og:description" content="非参数检验非参数检验是在总体方差未知或知道甚少的情况下，利用样本数据对总体分布形态等进行推断的方法。一般来说参数检验侧重于样本整体的均值，而非参数检验更侧重于样本的中位值，这也就意味对于极差较大的数据来说，非参数检验不容易收到极端值的干扰。 参数检验应用的前提是数据符合正态分布，而现实情况中很多数据的分布并不服从正态分布，虽然对于样本量很大的数据来说，即使其不符合正态分布，但应用参数检验也能取到较">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/head.jpg">
+<meta property="article:published_time" content="2024-08-17T07:32:37.000Z">
+<meta property="article:modified_time" content="2024-08-17T08:02:36.406Z">
+<meta property="article:author" content="寻风起.">
+<meta property="article:tag" content="假设检验">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/head.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/important/%E9%9D%9E%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '非参数检验',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-08-17 16:02:36'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="寻风起的个人博客"><span class="site-name">寻风起的个人博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">非参数检验</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><h1 id="非参数检验"><a href="#非参数检验" class="headerlink" title="非参数检验"></a>非参数检验</h1><p>非参数检验是在总体方差未知或知道甚少的情况下，利用样本数据对总体分布形态等进行推断的方法。一般来说参数检验侧重于样本整体的均值，而非参数检验更侧重于样本的中位值，这也就意味对于极差较大的数据来说，非参数检验不容易收到极端值的干扰。</p>
+<p>参数检验应用的前提是数据符合正态分布，而现实情况中很多数据的分布并不服从正态分布，虽然对于样本量很大的数据来说，即使其不符合正态分布，但应用参数检验也能取到较好的效果，但对于那些既不符合正态分布，同时样本量较小的情况下，则更适合用非参数检验。</p>
+<p>这些检验方法都可以在SPSS中快速实现，本文只是简单对各类方法进行简要的原理介绍和适用条件概括。</p>
+<h2 id="卡方检验-Chi-Square-Test"><a href="#卡方检验-Chi-Square-Test" class="headerlink" title="卡方检验(Chi-Square Test)"></a>卡方检验(Chi-Square Test)</h2><p>在这么多的非参数检验方法中，卡方检验无疑是最常用的方法之一，其常用于检验变量之间的关联性或检验观测数据与期望分布之间的适合度。</p>
+<script type="math/tex; mode=display">
+\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}</script><p>其中，$Oi$是观测频数，$Ei$ 是期望频数。</p>
+<p>比如假设你是一名市场研究人员，想要研究消费者的性别（男性或女性）与他们购买某种新产品的意愿（愿意购买、不愿意购买、尚未决定）之间是否存在关联。</p>
+<p>你调查了200位消费者，收集了他们的性别以及对购买该产品的意愿，并将结果整理成以下的列联表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>性别</th>
+<th>愿意购买</th>
+<th>不愿意购买</th>
+<th>尚未决定</th>
+<th>合计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>男性</td>
+<td>30</td>
+<td>50</td>
+<td>20</td>
+<td>100</td>
+</tr>
+<tr>
+<td>女性</td>
+<td>40</td>
+<td>30</td>
+<td>30</td>
+<td>100</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>70</strong></td>
+<td><strong>80</strong></td>
+<td><strong>50</strong></td>
+<td><strong>200</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>问题</strong>:<br>你想知道性别和购买意愿之间是否存在显著关联，或者说性别是否会影响消费者的购买决策。</p>
+<p><strong>解决方法</strong>:<br>由于性别和购买意愿都是分类变量，并且数据以列联表的形式呈现，可以使用<strong>卡方检验</strong>来检验性别和购买意愿之间的独立性。</p>
+<h2 id="Fisher精确检验-Fisher’s-Exact-Test"><a href="#Fisher精确检验-Fisher’s-Exact-Test" class="headerlink" title="Fisher精确检验(Fisher’s Exact Test)"></a>Fisher精确检验(Fisher’s Exact Test)</h2><p>Fisher精确检验其实与卡方检验很像，但其适用于当样本量小于20，或是某些单元格的期望频数小于5的情况。</p>
+<script type="math/tex; mode=display">
+p = \frac{(a+b)!(c+d)!(a+c)!(b+d)!}{a!b!c!d!n!}</script><p>其中，$a,b,c,d$是列联表中的四个单元格频数，$n$ 是样本总数。</p>
+<h2 id="Wilcoxon符号秩检验-Wilcoxon-Signed-Rank-Test"><a href="#Wilcoxon符号秩检验-Wilcoxon-Signed-Rank-Test" class="headerlink" title="Wilcoxon符号秩检验 (Wilcoxon Signed-Rank Test)"></a>Wilcoxon符号秩检验 (Wilcoxon Signed-Rank Test)</h2><p>符号检验只考虑的分布在中位数两侧的样本数据的个数，并没有考虑中位数两侧数据分布的疏密程度，而Wilcoxon符合秩检验便解决这个问题。</p>
+<script type="math/tex; mode=display">
+W = \sum \text{sign}(x_i - y_i) \times R(|x_i - y_i|)</script><p>其中，$x_i$和 $y_i$是成对样本的值，$R(∣x_i−y_i∣)$ 是差值的秩。</p>
+<p><strong>背景</strong>:<br>假设你是一名心理学家，正在研究一种新型的冥想疗法对减轻焦虑症状的效果。你招募了一组10名患有焦虑症的患者，分别在治疗前和治疗后测量他们的焦虑评分。你的目的是确定冥想疗法是否显著降低了焦虑评分。</p>
+<p>以下是每位患者治疗前后的焦虑评分：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>患者编号</th>
+<th>治疗前评分</th>
+<th>治疗后评分</th>
+<th>差值（治疗后 - 治疗前）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>25</td>
+<td>20</td>
+<td>-5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>28</td>
+<td>22</td>
+<td>-6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>31</td>
+<td>27</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>29</td>
+<td>25</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>34</td>
+<td>30</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>6</td>
+<td>32</td>
+<td>28</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>7</td>
+<td>30</td>
+<td>24</td>
+<td>-6</td>
+</tr>
+<tr>
+<td>8</td>
+<td>27</td>
+<td>22</td>
+<td>-5</td>
+</tr>
+<tr>
+<td>9</td>
+<td>35</td>
+<td>30</td>
+<td>-5</td>
+</tr>
+<tr>
+<td>10</td>
+<td>33</td>
+<td>29</td>
+<td>-4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>问题</strong>:<br>你想知道治疗前后的焦虑评分是否存在显著差异。</p>
+<p><strong>解决方法</strong>:<br>由于数据是配对的（同一组患者在治疗前后分别测量了焦虑评分），而且你不确定数据是否服从正态分布，因此可以使用 <strong>Wilcoxon符号秩检验</strong> 来检验治疗前后的差异是否显著。</p>
+<h2 id="Mann-Whitney检验-Mann-Whitney-U-Test"><a href="#Mann-Whitney检验-Mann-Whitney-U-Test" class="headerlink" title="Mann-Whitney检验 (Mann-Whitney U Test)"></a>Mann-Whitney检验 (Mann-Whitney U Test)</h2><p>Mann-Whitney检验是一种用于比较两组独立样本的非参数检验方法，它检验两组样本是否来自具有相同分布的总体。该检验是Wilcoxon秩和检验的变体。</p>
+<script type="math/tex; mode=display">
+U = n_1n_2 + \frac{n_1(n_1+1)}{2} - R_1</script><p>其中，$n_1$ 和 $n_2$是两组样本的大小，$R_1$​是第一组样本的秩和。</p>
+<p><strong>实际例子</strong>:<br>假设你是一名药物研究人员，正在研究两种药物（A和B）对降低血压的效果。你随机选择了两组不同的志愿者，每组20人，并分别给予药物A和药物B治疗一段时间，然后测量每位志愿者的血压变化值（治疗前后血压的差异）。</p>
+<ul>
+<li><strong>药物A组的血压变化值</strong>: 12,15,14,10,18,13,11,16,19,14,15,17,12,14,15,13,11,18,17,16</li>
+<li><strong>药物B组的血压变化值</strong>: 10,9,12,11,14,10,13,12,11,9,8,14,10,11,12,10,9,11,10,13</li>
+</ul>
+<p><strong>问题</strong>:<br>你想知道药物A和药物B的效果是否有显著差异。</p>
+<p><strong>解决方法</strong>:<br>由于两个组的志愿者是独立的（不同的人），而且假设数据不服从正态分布，因此可以使用<strong>Mann-Whitney检验</strong>来比较两组数据的分布是否存在显著差异。</p>
+<p><strong>应用场景</strong>:</p>
+<p>Mann-Whitney检验适用于这种情况，因为它不需要数据服从正态分布，并且可以处理独立样本间的比较。</p>
+<h2 id="Kruskal-Wallis检验-Kruskal-Wallis-H-Test"><a href="#Kruskal-Wallis检验-Kruskal-Wallis-H-Test" class="headerlink" title="Kruskal-Wallis检验 (Kruskal-Wallis H Test)"></a>Kruskal-Wallis检验 (Kruskal-Wallis H Test)</h2><p>Kruskal-Wallis检验是Mann-Whitney检验的扩展，适用于比较两组以上的独立样本。它是一种秩和检验，用于检验多个样本是否来自同一分布。</p>
+<script type="math/tex; mode=display">
+H = \frac{12}{N(N+1)} \sum_{i=1}^k \frac{R_i^2}{n_i} - 3(N+1)</script><p>其中，$N$ 是所有样本的总数，$R_i$是第$i$组样本的秩和，$n_i$是第$i$组的样本量，$k$是组数。</p>
+<p><strong>背景</strong>:<br>假设你是一名教育研究人员，正在研究三种不同教学方法（传统教学、在线教学、混合教学）对学生期末考试成绩的影响。你从三所不同的学校中随机选择了30名学生，分别接受这三种不同的教学方法，每组10名学生。期末考试结束后，你收集了每个学生的考试成绩，并希望确定不同教学方法之间的成绩是否有显著差异。</p>
+<p>以下是各组学生的考试成绩：</p>
+<ul>
+<li><strong>传统教学组</strong>: 78, 85, 82, 88, 90, 83, 79, 81, 87, 84</li>
+<li><strong>在线教学组</strong>: 70, 75, 68, 80, 77, 72, 74, 76, 69, 73</li>
+<li><strong>混合教学组</strong>: 85, 88, 90, 92, 89, 91, 87, 86, 90, 88</li>
+</ul>
+<p><strong>问题</strong>:<br>你想知道这三种不同的教学方法是否导致了学生成绩的显著差异。</p>
+<p><strong>解决方法</strong>:<br>因为你在比较三个独立组的数据，并且不确定这些数据是否服从正态分布，因此可以使用 <strong>Kruskal-Wallis检验</strong> 来检验三组数据的中位数是否存在显著差异。</p>
+<h2 id="Friedman检验（Friedman-Test）"><a href="#Friedman检验（Friedman-Test）" class="headerlink" title="Friedman检验（Friedman Test）"></a>Friedman检验（Friedman Test）</h2><script type="math/tex; mode=display">
+Q = \frac{12}{nk(k+1)} \sum_{j=1}^k R_j^2 - 3n(k+1)</script><p>其中，n是被试的数量，k是测量次数，$R_j$​是第j个条件的秩和。</p>
+<p><strong>背景</strong>:<br>假设你是一名营养学研究人员，正在研究三种不同饮食计划对体重变化的效果。你从同一组志愿者中选择了10名志愿者，依次让他们接受三种不同的饮食计划，每个饮食计划持续一个月。为了控制变量，每名志愿者在每种饮食计划之间有一段清洗期，以确保前一饮食计划的影响不会影响后一饮食计划。</p>
+<p>以下是每名志愿者在每个饮食计划后的体重减轻情况（单位：公斤）：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>志愿者编号</th>
+<th>饮食计划A</th>
+<th>饮食计划B</th>
+<th>饮食计划C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2.1</td>
+<td>2.5</td>
+<td>1.9</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3.4</td>
+<td>3.0</td>
+<td>2.8</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.5</td>
+<td>2.0</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2.3</td>
+<td>2.2</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3.0</td>
+<td>2.8</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.8</td>
+<td>3.2</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1.9</td>
+<td>2.4</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2.6</td>
+<td>2.7</td>
+<td>2.2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2.4</td>
+<td>2.6</td>
+<td>2.3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2.9</td>
+<td>3.1</td>
+<td>2.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>问题</strong>:<br>你想知道这三种饮食计划是否对体重减轻效果有显著不同的影响。</p>
+<p><strong>解决方法</strong>:<br>由于这是同一组志愿者在三种不同条件下的重复测量数据，并且你不确定数据是否服从正态分布，可以使用 <strong>Friedman检验</strong> 来检验三种饮食计划对体重减轻效果的差异是否显著。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><strong>卡方检验</strong>和<strong>Fisher精确检验</strong>用于类别数据之间的关联性检验，区别在于卡方检验更适合大样本，而Fisher精确检验更适合小样本。</li>
+<li><strong>Mann-Whitney检验</strong>和<strong>Kruskal-Wallis检验</strong>用于比较独立样本的数据分布，Mann-Whitney检验适用于两组数据，Kruskal-Wallis检验适用于两组以上数据。</li>
+<li><strong>Friedman检验</strong>和<strong>Wilcoxon符号秩检验</strong>用于比较相关样本的数据分布，Friedman检验适用于多组数据，Wilcoxon符号秩检验适用于两组数据。</li>
+</ul>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">寻风起.</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>中国西南地区某综合类985理工科在读</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/XunFengqi" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2867703204@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的行动基地！传送门已部署，我们的行动将更迅速。</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/30/Pandas%E4%B8%8ENumpy%E8%AF%AD%E6%B3%95/" title="数据科学中Numpy与Pandas的常用语法">数据科学中Numpy与Pandas的常用语法</a><time datetime="2024-11-30T06:51:37.000Z" title="发表于 2024-11-30 14:51:37">2024-11-30</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">2.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-11-30T12:17:57.732Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By 寻风起.</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="32" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
